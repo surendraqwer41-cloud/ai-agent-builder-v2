@@ -1,7 +1,8 @@
-
 {
   "appId": "com.surendra.aiagent",
   "appName": "AI Agent Builder",
   "webDir": "www",
-  "bundledWebRuntime": false
+  "server": {
+    "androidScheme": "https"
+  }
 }
