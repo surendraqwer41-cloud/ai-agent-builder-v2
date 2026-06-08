@@ -1,11 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Agent Builder</title>
-  </head>
-  <body>
-    <h1>AI Agent Builder</h1>
-  </body>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Builder</title>
+
+<style>
+body{
+    margin:0;
+    background:#0f172a;
+    color:white;
+    font-family:Arial;
+}
+
+.header{
+    text-align:center;
+    padding:20px;
+    background:#1e293b;
+}
+
+textarea{
+    width:90%;
+    height:150px;
+    margin:20px auto;
+    display:block;
+    border:none;
+    border-radius:10px;
+    padding:10px;
+}
+
+button{
+    width:90%;
+    display:block;
+    margin:auto;
+    padding:15px;
+    background:#22c55e;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+}
+
+#result{
+    margin:20px;
+    padding:15px;
+    background:#1e293b;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>AI Agent Builder</h1>
+<p>Create App Ideas with AI</p>
+</div>
+
+<textarea id="prompt"
+placeholder="Describe your app idea..."></textarea>
+
+<button onclick="generate()">
+Generate
+</button>
+
+<div id="result">
+Result will appear here...
+</div>
+
+<script>
+function generate(){
+ let text =
+ document.getElementById("prompt").value;
+
+ document.getElementById("result").innerHTML =
+ `
+ <h3>Generated App Plan</h3>
+ <p><b>Idea:</b> ${text}</p>
+ <p>UI Design ✔</p>
+ <p>Database ✔</p>
+ <p>APK Build Ready ✔</p>
+ `;
+}
+</script>
+
+</body>
 </html>
