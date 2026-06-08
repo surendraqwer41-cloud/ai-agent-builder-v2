@@ -1,8 +1,5 @@
 {
   "appId": "com.aibuilder.app",
   "appName": "AI Agent Builder",
-  "webDir": ".",
-  "server": {
-    "androidScheme": "https"
-  }
+  "webDir": "."
 }
