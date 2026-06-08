@@ -2,37 +2,45 @@ name: Android Build
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '18'
 
-      - run: npm install
+      - name: Run npm install
+        run: npm install
 
-      - run: npm install @capacitor/core @capacitor/cli @capacitor/android
+      - name: Install Capacitor
+        run: npm install @capacitor/core @capacitor/cli @capacitor/android
 
-      - run: npx cap add android || true
+      - name: Create www directory
+        run: |
+          mkdir -p www
+          cp index.html www/index.html
 
-      - run: npx cap sync android
+      - name: Add Android platform
+        run: npx cap add android || true
 
-      - uses: actions/setup-java@v4
+      - name: Sync Android
+        run: npx cap sync android
+
+      - uses: actions/setup-java@v3
         with:
-          distribution: temurin
-          java-version: 21
+          distribution: 'temurin'
+          java-version: '17'
 
-      - run: chmod +x android/gradlew
-
-      - run: cd android && ./gradlew assembleDebug
+      - name: Build APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
 
       - uses: actions/upload-artifact@v4
         with:
