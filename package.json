@@ -1,13 +1,14 @@
-const data = await response.json();
-
-console.log(data);
-
-if (data.error) {
-  document.getElementById("result").innerText =
-    "Error: " + data.error.message;
-  return;
+{
+  "name": "ai-agent-builder",
+  "version": "1.0.0",
+  "description": "AI Agent Builder",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  }
 }
-
-document.getElementById("result").innerText =
-  data.candidates?.[0]?.content?.parts?.[0]?.text ||
-  JSON.stringify(data, null, 2);
